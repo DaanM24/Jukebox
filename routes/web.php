@@ -21,4 +21,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/songlist', function () {
+    $song = DB::table('songs')->get();
+    return view('songlist', ['song' => $song]);
+});
+
+Route::get('/playlists', function () {
+    $playlist = DB::table('playlists')->get();
+    return view('playlists', ['playlist' => $playlist]);
+});
+
 require __DIR__.'/auth.php';
