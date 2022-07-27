@@ -13,7 +13,8 @@
                     <tr>    
                     <th>{{$data->title}}</th>
                     <th>{{$data->artist}}</th>
-                    <th>{{$data->album}}</th></br>      
+                    <th>{{$data->album}}</th>
+                    <th>{{$data->genre}}</th></br>      
                     </tr>
                 @endforeach
                 </div>
