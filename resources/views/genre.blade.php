@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('List of all genres') }}
+            {{ __('List of all songs') }}
         </h2>
     </x-slot>
 
@@ -11,7 +11,9 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                 @foreach($genre as $key => $data)
                     <tr>    
-                    <a href="/genre/<?= $data->name; ?>" style="padding: 5px; border-width: 2px;">{{$data->name}}</a></br></br>
+                    <th>{{$data->title}}</th>
+                    <th>{{$data->artist}}</th>
+                    <th>{{$data->album}}</th></br>  
                     </tr>
                 @endforeach
                 </div>

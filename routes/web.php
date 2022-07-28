@@ -31,6 +31,13 @@ Route::get('/genres', function () {
     return view('genres', ['genre' => $genre]);
 });
 
+Route::get('/genre/{id}', function ($id){
+    $genre = DB::table('songs')
+                ->where('genre', '=', $id)
+                ->get();
+    return view('genre', ['genre' => $genre]);
+});
+
 Route::get('/playlists', function () {
     $playlist = DB::table('playlists')->get();
     return view('playlists', ['playlist' => $playlist]);
