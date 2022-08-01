@@ -14,7 +14,7 @@
                     <th>{{$data->title}}</th>
                     <th>{{$data->artist}}</th>
                     <th>{{$data->album}}</th>
-                    <th>{{$data->genre}}</th></br>      
+                    <a href="/songdetails/<?= $data->id; ?>" style="padding: 5px; border-width: 2px;">Details</a></br></br>
                     </tr>
                 @endforeach
                 </div>
