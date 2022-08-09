@@ -10,8 +10,9 @@ class SessionController extends Controller
 {
     public function show(Request $request, $id)
     {
-        $value = $request->session()->get('id');
- 
+        $request->session()->put('info', $id);
+        $value = $request->session()->pull('info');
+
         echo $value;
     }
 }
