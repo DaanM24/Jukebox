@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SessionController;
+use App\Http\Controllers\PlaylistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +51,12 @@ Route::get('/playlists', function () {
     return view('playlists', ['playlist' => $playlist]);
 });
  
-Route::get('/session/{id}', [SessionController::class, 'show']);
+Route::get('/playlist/{id}/add', [PlaylistController::class, 'add']);
+
+Route::get('/playlist', function () {
+    $value = session('playlists');
+
+    return view('test', ['value' => $value]);
+});
 
 require __DIR__.'/auth.php';
