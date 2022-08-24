@@ -12,4 +12,11 @@ class PlaylistController extends Controller
 
         return redirect('/playlist');
     }
+
+    public function remove(Request $request, $id)
+    {
+        $request->session()->pull('playlists.'. $id);
+
+        return redirect('/playlist');
+    }
 }

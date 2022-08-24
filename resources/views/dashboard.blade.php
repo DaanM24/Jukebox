@@ -12,7 +12,8 @@
                     <b>Hello World</b></br></br>
                     <a href="/playlists" style="padding: 5px; border-width: 2px;">All Playlists</a></br></br>
                     <a href="/songlist" style="padding: 5px; border-width: 2px;">All Songs</a></br></br>
-                    <a href="/genres" style="padding: 5px; border-width: 2px;">All Genres</a>
+                    <a href="/genres" style="padding: 5px; border-width: 2px;">All Genres</a></br></br>
+                    <a href="/playlist" style="padding: 5px; border-width: 2px;">My Playlist</a>
                 </div>
             </div>
         </div>

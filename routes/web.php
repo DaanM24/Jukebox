@@ -53,10 +53,12 @@ Route::get('/playlists', function () {
  
 Route::get('/playlist/{id}/add', [PlaylistController::class, 'add']);
 
+Route::get('/playlist/{id}/remove', [PlaylistController::class, 'remove']);
+
 Route::get('/playlist', function () {
     $value = session('playlists');
 
-    return view('test', ['value' => $value]);
+    return view('playlist', ['value' => $value]);
 });
 
 require __DIR__.'/auth.php';
