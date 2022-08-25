@@ -20,7 +20,8 @@ class SongFactory extends Factory
             'title' => $this->faker->name(),
             'artist' => $this->faker->name(),
             'album' => $this->faker->name(),
-            'genre' => $this->faker->name(),
+            'genre' => '4',
+            'duration' => '200',
         ];
     }
 }

@@ -11,7 +11,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                 @foreach($genre as $key => $data)
                     <tr>    
-                    <a href="/genre/<?= $data->name; ?>" style="padding: 5px; border-width: 2px;">{{$data->name}}</a></br></br>
+                    <a href="/genre/<?= $data->id; ?>" style="padding: 5px; border-width: 2px;">{{$data->name}}</a></br></br>
                     </tr>
                 @endforeach
                 </div>

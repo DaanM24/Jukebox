@@ -56,9 +56,10 @@ Route::get('/playlist/{id}/add', [PlaylistController::class, 'add']);
 Route::get('/playlist/{id}/remove', [PlaylistController::class, 'remove']);
 
 Route::get('/playlist', function () {
+    $song = DB::table('songs')->get();
     $value = session('playlists');
 
-    return view('playlist', ['value' => $value]);
+    return view('playlist', ['value' => $value, 'song' => $song]);
 });
 
 require __DIR__.'/auth.php';
