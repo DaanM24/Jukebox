@@ -2,6 +2,8 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('My Temporary Playlist') }}
+            @php $duration = 0
+            @endphp
             
         </h2>
     </x-slot>
@@ -18,11 +20,15 @@
                         {{$info->album}}
                         {{$info->artist}}
                         {{$info->duration}}
+                        @php
+                        $duration = $duration + $info->duration
+                        @endphp
                     @endif
                     @endforeach 
-                    <a href="/songdetails/{{$data}}" style="padding: 5px; border-width: 2px;">Details</a>
-                    <a href="/playlist/{{$key}}/remove" style="padding: 5px; border-width: 2px;">Remove</a></br></br>
+                    <a href="/playlist/{{$key}}/remove" style="padding: 5px; border-width: 2px; float:right;">Remove</a>
+                    <a href="/songdetails/{{$data}}" style="padding: 5px; border-width: 2px; float:right">Details</a></br></br>
                     @endforeach
+                    <b>Total Duration: {{$duration}} seconds</b>
                 </div>
             </div>
         </div>
