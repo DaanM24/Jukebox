@@ -16,7 +16,7 @@
                     <th><b>Album: </b>{{$data->album}}</th></br>
                     <th><b>Genre: </b>{{$data->genre}}</th></br>
                     <th><b>Duration: </b>{{$data->duration}}</th></br></br>
-                    <a href="/playlist/{{$data->id}}/add" style="padding: 5px; border-width: 2px;">Add song to temporary playlist</a>
+                    <a href="/playlist/{{$data->id}}/add" style="padding: 5px; border-width: 2px;">Add to temporary playlist</a>
                     </tr>
                 @endforeach
                 </div>

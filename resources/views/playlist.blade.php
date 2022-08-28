@@ -4,7 +4,7 @@
             {{ __('My Temporary Playlist') }}
             @php $duration = 0
             @endphp
-            
+            <a href="/playlistname" style="padding: 5px; border-width: 2px; float:right">Make it permanent</a>
         </h2>
     </x-slot>
 

@@ -50,10 +50,16 @@ Route::get('/playlists', function () {
     $playlist = DB::table('playlists')->get();
     return view('playlists', ['playlist' => $playlist]);
 });
+
+Route::get('/playlistname', function () {
+    return view('playlistname');
+});
  
 Route::get('/playlist/{id}/add', [PlaylistController::class, 'add']);
 
 Route::get('/playlist/{id}/remove', [PlaylistController::class, 'remove']);
+
+Route::post('/playlist/create', [PlaylistController::class, 'create']);
 
 Route::get('/playlist', function () {
     $song = DB::table('songs')->get();
