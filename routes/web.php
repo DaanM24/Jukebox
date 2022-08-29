@@ -52,6 +52,18 @@ Route::get('/playlists', function () {
     return view('playlists', ['playlist' => $playlist]);
 });
 
+Route::get('/playlists', function () {
+    $playlist = DB::table('playlists')->get();
+    return view('playlists', ['playlist' => $playlist]);
+});
+
+Route::get('/myplaylists', function () {
+    $playlist = DB::table('playlists')
+                    ->where('userid', '=', 1)
+                    ->get();
+    return view('playlists', ['playlist' => $playlist]);
+});
+
 Route::get('/playlistname', function () {
     return view('playlistname');
 });

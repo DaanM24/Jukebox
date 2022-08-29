@@ -28,6 +28,8 @@ class PlaylistController extends Controller
 
         $playlist->title = $request->name;
 
+        $playlist->userid = 1;
+
         $playlist->save();
 
         $name = Playlist::where('title', $request->name)->get();

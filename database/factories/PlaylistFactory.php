@@ -18,6 +18,7 @@ class PlaylistFactory extends Factory
     {
         return [
             'title' => $this->faker->name(),
+            'userid' => '2',
         ];
     }
 }
