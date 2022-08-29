@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlaylistController;
+use App\Http\Controllers\PermPlaylistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,15 @@ Route::get('/playlistname', function () {
     return view('playlistname');
 });
 
+Route::get('/playlistrename', function () {
+    return view('playlistrename');
+});
+
+Route::get('/playlistselector', function () {
+    $playlist = DB::table('playlists')->get();
+    return view('playlistselector', ['playlist' => $playlist]);
+});
+
 Route::get('/playlistdetails/{id}', function ($id) {
     $name = DB::table('playlists')
                 ->where('id', '=', $id)
@@ -70,6 +80,16 @@ Route::get('/playlistdetails/{id}', function ($id) {
 
     return view('playlistdetails', ['name' => $name, 'select' => $select, 'song' => $song]);
 });
+
+Route::get('/playlistdetails/{id}/addSong', [PermPlaylistController::class, 'addSong']);
+
+Route::post('/playlistdetails/add', [PermPlaylistController::class, 'add']);
+
+Route::get('/playlistdetails/{id}/remove', [PermPlaylistController::class, 'remove']);
+
+Route::get('/playlistdetails/{id}/rename', [PermPlaylistController::class, 'storeName']);
+
+Route::post('/playlistdetails/rename', [PermPlaylistController::class, 'changeName']);
  
 Route::get('/playlist/{id}/add', [PlaylistController::class, 'add']);
 

@@ -3,6 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             @foreach ($name as $data)
             <b>{{$data->title}}</b>
+            <a href="/playlistdetails/{{$data->id}}/rename" style="padding: 5px; border-width: 2px; float:right;">Rename</a>
             @endforeach
             @php $duration = 0
             @endphp
@@ -26,9 +27,10 @@
                                 @endphp
                             @endif
                         @endforeach
-                        <a href="/" style="padding: 5px; border-width: 2px; float:right;">Remove</a>
-                        <a href="/" style="padding: 5px; border-width: 2px; float:right">Details</a></br></br>
+                        <a href="/playlistdetails/{{$info->id}}/remove" style="padding: 5px; border-width: 2px; float:right;">Remove</a>
+                        <a href="/songdetails/{{$info->songid}}" style="padding: 5px; border-width: 2px; float:right">Details</a></br></br>
                     @endforeach
+                    <b>Total Duration: {{$duration}} seconds</b>
                 </div>
             </div>
         </div>

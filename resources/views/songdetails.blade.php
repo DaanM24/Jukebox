@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('List of all songs') }}
+            {{ __('Song Details') }}
         </h2>
     </x-slot>
 
@@ -16,6 +16,7 @@
                     <th><b>Album: </b>{{$data->album}}</th></br>
                     <th><b>Genre: </b>{{$data->genre}}</th></br>
                     <th><b>Duration: </b>{{$data->duration}}</th></br></br>
+                    <a href="/playlistdetails/{{$data->id}}/addSong" style="padding: 5px; border-width: 2px;">Add to playlist</a>
                     <a href="/playlist/{{$data->id}}/add" style="padding: 5px; border-width: 2px;">Add to temporary playlist</a>
                     </tr>
                 @endforeach
