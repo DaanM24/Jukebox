@@ -12,7 +12,8 @@
                 @foreach($playlist as $key => $data)
                     <tr>    
                     <th>{{$data->id}}</th>
-                    <th>{{$data->title}}</th></br>  
+                    <th>{{$data->title}}</th>
+                    <a href="/playlistdetails/{{$key + 1}}" style="padding: 5px; border-width: 2px;">My Playlist</a></br></br>  
                     </tr>
                 @endforeach
                 </div>

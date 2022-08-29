@@ -32,7 +32,7 @@ class PlaylistController extends Controller
 
         $name = Playlist::where('title', $request->name)->get();
 
-        $songs = $request->session()->get('playlists');
+        $songs = $request->session()->pull('playlists');
 
         foreach ($songs as $song => $count){
             $savedSong = new Saved_Song;

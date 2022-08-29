@@ -54,6 +54,22 @@ Route::get('/playlists', function () {
 Route::get('/playlistname', function () {
     return view('playlistname');
 });
+
+Route::get('/playlistdetails/{id}', function ($id) {
+    $name = DB::table('playlists')
+                ->where('id', '=', $id)
+                ->get();
+
+    $select = DB::table('saved_songs')
+                ->where('listid', '=', $id)
+                ->get();
+    
+    $song = DB::table('songs')->get();
+
+    // dd($select);
+
+    return view('playlistdetails', ['name' => $name, 'select' => $select, 'song' => $song]);
+});
  
 Route::get('/playlist/{id}/add', [PlaylistController::class, 'add']);
 
