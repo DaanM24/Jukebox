@@ -9,4 +9,9 @@ class Playlist extends Model
 {
     use HasFactory;
     protected $table = 'playlists';
+
+    public function saved_songs()
+    {
+        return $this->morphToMany(Saved_Song::class, 'taggable');
+    }
 }

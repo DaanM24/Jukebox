@@ -5,11 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Playlist;
 use App\Models\Saved_Song;
+use App\Models\Song;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SessionController;
 
 class PlaylistController extends Controller
 {
+    public function getPlaylistSongs(Request $request)
+    {
+        $song = Song::all();
+        $value = app('App\Http\Controllers\SessionController')->sessionGetAll('playlists', $request);
+
+        return view('/playlist')->with(['value' => $value, 'song' => $song]);
+    }
+
     public function add(Request $request, $id)
     {
         app('App\Http\Controllers\SessionController')->sessionPush('playlists', $id, $request);
