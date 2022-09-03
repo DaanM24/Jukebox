@@ -5,19 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Playlist;
 use App\Models\Saved_Song;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\SessionController;
 
 class PlaylistController extends Controller
 {
     public function add(Request $request, $id)
     {
-        $request->session()->push('playlists', $id); 
+        app('App\Http\Controllers\SessionController')->sessionPush('playlists', $id, $request);
 
         return redirect('/playlist');
     }
 
     public function remove(Request $request, $id)
     {
-        $request->session()->pull('playlists.'. $id);
+        app('App\Http\Controllers\SessionController')->sessionPull('playlists', $id, $request);
 
         return redirect('/playlist');
     }
@@ -28,13 +30,13 @@ class PlaylistController extends Controller
 
         $playlist->title = $request->name;
 
-        $playlist->userid = 1;
+        $playlist->userid = Auth::user()->id;
 
         $playlist->save();
 
         $name = Playlist::where('title', $request->name)->get();
 
-        $songs = $request->session()->pull('playlists');
+        $songs = app('App\Http\Controllers\SessionController')->sessionPullAll('playlists', $request);
 
         foreach ($songs as $song => $count){
             $savedSong = new Saved_Song;

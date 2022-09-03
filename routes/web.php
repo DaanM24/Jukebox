@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\PermPlaylistController;
+use App\Models\Genre;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,10 +42,8 @@ Route::get('/genres', function () {
 });
 
 Route::get('/genre/{id}', function ($id){
-    $genre = DB::table('songs')
-                ->where('genre', '=', $id)
-                ->get();
-    return view('genre', ['genre' => $genre]);
+    $songs = Genre::find($id)->songs;
+    return view('genre', ['genre' => $songs]);
 });
 
 Route::get('/playlists', function () {
@@ -59,7 +58,7 @@ Route::get('/playlists', function () {
 
 Route::get('/myplaylists', function () {
     $playlist = DB::table('playlists')
-                    ->where('userid', '=', 1)
+                    ->where('userid', '=', Auth::user()->id)
                     ->get();
     return view('playlists', ['playlist' => $playlist]);
 });

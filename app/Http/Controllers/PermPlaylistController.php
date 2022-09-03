@@ -10,7 +10,7 @@ class PermPlaylistController extends Controller
 {
     public function addSong(Request $request, $id)
     {
-        $request->session()->put('song', $id);
+        app('App\Http\Controllers\SessionController')->sessionPut('song', $id, $request);
 
         return redirect('/playlistselector');
     }
@@ -19,7 +19,7 @@ class PermPlaylistController extends Controller
     {
         $list = Playlist::where('title', $request->playlist)->get();
 
-        $songid = $request->session()->get('song');
+        $songid = app('App\Http\Controllers\SessionController')->sessionGetAll('song', $request);
 
         $savedSong = new Saved_Song;
 
@@ -41,16 +41,17 @@ class PermPlaylistController extends Controller
 
     public function storeName(Request $request, $id)
     {
-        $request->session()->put('name', $id);
+        app('App\Http\Controllers\SessionController')->sessionPut('name', $id, $request);
 
         return redirect('/playlistrename');
     }
 
     public function changeName(Request $request)
     {
+        $name = $songid = app('App\Http\Controllers\SessionController')->sessionGetAll('name', $request);
         //$request->name;
         //$request->session()->get('name');
-        Playlist::where('id', $request->session()->get('name'))
+        Playlist::where('id', $name)
                 ->update(['title' => $request->name]);
 
         return redirect('/playlists');
