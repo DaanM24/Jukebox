@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Genre;
 
+//manages everything for genres
 class GenreController extends Controller
 {
     //get all songs of a specific genre

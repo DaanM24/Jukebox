@@ -9,6 +9,7 @@ use App\Models\Song;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SessionController;
 
+//manages everything for temporary playlists
 class PlaylistController extends Controller
 {
     //retrieve all songs from a specific playlist

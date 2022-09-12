@@ -8,6 +8,8 @@ use App\Models\Saved_Song;
 use App\Models\Song;
 use Illuminate\Support\Facades\Auth;
 
+
+//manages everything for permanent playlists
 class PermPlaylistController extends Controller
 {
     //retrieves all playlists from database

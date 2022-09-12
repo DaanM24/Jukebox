@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+//connects with the saved_song database and establishes relationship between songs and playlists
 class Saved_Song extends Model
 {
     use HasFactory;

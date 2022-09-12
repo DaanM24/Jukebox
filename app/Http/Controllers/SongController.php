@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Song;
 
+//manages everything for songs
 class SongController extends Controller
 {
     //retrieves all songs from the database

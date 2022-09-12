@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use app\Http\Controllers\PlaylistController;
 
+//manages all session data
 class SessionController extends Controller
 {
     //stores item in session
