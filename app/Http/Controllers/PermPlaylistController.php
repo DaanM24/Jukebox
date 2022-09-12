@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PermPlaylistController extends Controller
 {
+    //retrieves all playlists from database
     public function getAllPlaylists()
     {
         $playlist = Playlist::all();
@@ -17,6 +18,7 @@ class PermPlaylistController extends Controller
         return view('/playlists')->with('playlist', $playlist);
     }
 
+    //retrieves all playlist tied to a user
     public function getPersonalPlaylists()
     {
         $playlist = Playlist::where('userid', Auth::user()->id)->get();
@@ -24,24 +26,19 @@ class PermPlaylistController extends Controller
         return view('/playlists')->with('playlist', $playlist);
     }
 
+    //retrieves all songs from a playlist from database
     public function getPlaylistDetails($id)
     {
-    //     $name = DB::table('playlists')
-    //             ->where('id', '=', $id)
-    //             ->get();
         $name = Playlist::where('id', $id)->get();
 
-        // $select = DB::table('saved_songs')
-        //         ->where('listid', '=', $id)
-        //         ->get();
         $select = Saved_Song::where('listid', $id)->get();
     
-        // $song = DB::table('songs')->get();
         $song = Song::all();
 
         return view('playlistdetails')->with(['name' => $name, 'select' => $select, 'song' => $song]);
     }
 
+    //retrieves all playlists to put into selector dropdown
     public function getPlaylistSelector()
     {
         $playlist = Playlist::all();
@@ -49,6 +46,7 @@ class PermPlaylistController extends Controller
         return view('/playlistselector')->with('playlist', $playlist);
     }
 
+    //stores name to add to permanent playlist
     public function addSong(Request $request, $id)
     {
         app('App\Http\Controllers\SessionController')->sessionPut('song', $id, $request);
@@ -56,6 +54,7 @@ class PermPlaylistController extends Controller
         return redirect('/playlistselector');
     }
 
+    //adds song to specific permanent playlist
     public function add(Request $request)
     {
         $list = Playlist::where('title', $request->playlist)->get();
@@ -73,6 +72,7 @@ class PermPlaylistController extends Controller
         return redirect('/playlists');
     }
 
+    //removes a specific song from a permanent playlist
     public function remove($id)
     {
         Saved_Song::where('id', $id)->delete();
@@ -80,6 +80,7 @@ class PermPlaylistController extends Controller
         return back();
     }
 
+    //stores playlist id for playlist name change
     public function storeName(Request $request, $id)
     {
         app('App\Http\Controllers\SessionController')->sessionPut('name', $id, $request);
@@ -87,11 +88,11 @@ class PermPlaylistController extends Controller
         return redirect('/playlistrename');
     }
 
+    //changes name of specific playlist
     public function changeName(Request $request)
     {
         $name = $songid = app('App\Http\Controllers\SessionController')->sessionGetAll('name', $request);
-        //$request->name;
-        //$request->session()->get('name');
+
         Playlist::where('id', $name)
                 ->update(['title' => $request->name]);
 

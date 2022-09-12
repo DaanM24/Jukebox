@@ -10,6 +10,7 @@ class Genre extends Model
     use HasFactory;
     protected $table = 'genres';
 
+    //one to many relationship with genre
     public function songs()
     {
         return $this->hasMany(Song::class, 'genre');

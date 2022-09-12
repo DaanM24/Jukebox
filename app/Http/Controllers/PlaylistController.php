@@ -11,6 +11,7 @@ use App\Http\Controllers\SessionController;
 
 class PlaylistController extends Controller
 {
+    //retrieve all songs from a specific playlist
     public function getPlaylistSongs(Request $request)
     {
         $song = Song::all();
@@ -19,6 +20,7 @@ class PlaylistController extends Controller
         return view('/playlist')->with(['value' => $value, 'song' => $song]);
     }
 
+    //adds a song to the temporary playlist
     public function add(Request $request, $id)
     {
         app('App\Http\Controllers\SessionController')->sessionPush('playlists', $id, $request);
@@ -26,6 +28,7 @@ class PlaylistController extends Controller
         return redirect('/playlist');
     }
 
+    //deletes a song from the temporary playlist
     public function remove(Request $request, $id)
     {
         app('App\Http\Controllers\SessionController')->sessionPull('playlists', $id, $request);
@@ -33,6 +36,7 @@ class PlaylistController extends Controller
         return redirect('/playlist');
     }
 
+    //makes a temporary playlist into a permanent one
     public function create(Request $request)
     {
         $playlist = new Playlist;

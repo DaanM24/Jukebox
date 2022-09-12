@@ -7,6 +7,7 @@ use App\Models\Genre;
 
 class GenreController extends Controller
 {
+    //get all songs of a specific genre
     public function getGenreSongs($id)
     {
         $songs = Genre::find($id)->songs;
@@ -14,6 +15,7 @@ class GenreController extends Controller
         return view('/genre')->with('genre', $songs);
     }
 
+    //retrieve the data of all genres
     public function getGenres()
     {
         $genre = Genre::all();
